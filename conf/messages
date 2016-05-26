@@ -1,0 +1,3 @@
+error.required=必須入力です
+error.email=メール形式で入力してください
+error.email.required=メール形式で入力してください

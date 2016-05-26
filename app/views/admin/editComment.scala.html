@@ -1,0 +1,26 @@
+@(editCommentForm :  Form[forms.EditComment])
+
+@adminMain("編集") {
+@adminNav()
+	<h1>編集画面</h1>
+	@helper.form(action = routes.AdminController.doEditComment(),
+	'enctype -> "multipart/form-data") {
+		<input type='hidden' name='commentId' value='@editCommentForm("commentId").value' />
+		@helper.inputText(editCommentForm("commentTitle"),'_label -> "コメントタイトル")
+		@helper.inputText(editCommentForm("commentName"),'_label -> "コメント名")
+		@helper.inputText(editCommentForm("mailAddress"),'_label -> "メールアドレス")
+		@helper.textarea(editCommentForm("commentMessage"),'_label -> "コメントメッセージ")
+		<dl>
+    		<dt>
+    			<label for="img">
+    				画像を更新<input type="file" name="commentPicture">
+    				画像を削除<input type='checkbox' name='deletePic' />
+    			</label>
+			</dt>
+    		<dd>
+				<img src='@editCommentForm("commentImage").value' />
+			</dd>
+		</dl>
+		<input class='update-confirm' type="submit" value="変更を保存">
+	}
+}

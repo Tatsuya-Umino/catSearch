@@ -1,0 +1,85 @@
+@(message: String, myForm: Form[forms.ContributorInfo], route: play.api.mvc.Call)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fieldConstructor.fieldC.f) }
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", true) {
+<body id="post">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sp_menu()
+			</div>
+			<div id="main_wrap">
+				<div id="main_content" class="search">
+					<h2><i class="icon-bullhorn"></i>探している猫の情報を投稿する</h2>
+					<div id="add_320_50_twin">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					</div>
+					<div id="form_box">
+						<ul id="form_pagenate">
+							<li><span>STEP 1</span>最重要情報</li>
+							<li><span>STEP 2</span>探している猫の情報</li>
+							<li class="current"><span>STEP 3</span>投稿者の情報</li>
+						</ul>
+						@form(action=route){
+							<h3>氏名<span>公開されません</span></h3>
+							<p>
+								@(inputText(
+								field = myForm("contributorName"), args = 'name -> "owner_name", 'class -> "form_text plchld", 'title -> "例 ： 山田太郎"
+								))
+							</p>
+							<h3>ニックネーム<span>サイト上でのあなたのお名前になります</span></h3>
+							<p>
+								@(inputText(
+								field = myForm("contributorNickName"), args = 'name -> "owner_nickname", 'class -> "form_text plchld", 'title -> "例 ： yamada"
+								))
+							</p>
+							<h3>生年月日<span>公開されません</span></h3>
+							<p class="birth">
+								@(inputText(
+								field = myForm("birthYear"), args = 'name -> "owner_birthday_y", 'class -> "form_text_col3 plchld", 'title -> "例 ： 1970"
+								))年
+								@(inputText(
+								field = myForm("birthMonth"), args = 'name -> "owner_birthday_m", 'class -> "form_text_col3 plchld", 'title -> "例 ： 5"
+								))月
+								@(inputText(
+								field = myForm("birthDay"), args = 'name -> "owner_birthday_d", 'class -> "form_text_col3 plchld", 'title -> "例 ： 20"
+								))日
+								
+							</p>
+							<h3>性別<span>公開されません</span></h3>
+							<p>
+								@(select (
+								        field = myForm("sex"), options = Seq("0"->"性別を選択してください", "1"->"男性", "2"->"女性"), args = 'name -> "unit_area_tdfk"
+								      ))
+							</p>
+							<h3>メールアドレス<span>公開されません</span></h3>
+							<p>
+								@(inputText(
+								field = myForm("mailAddress"), args = 'name -> "owner_mailaddress", 'class -> "form_text plchld", 'title -> "例 ： example@@nekosearch.com"
+								))
+							</p>
+							<h3>当サイトを何で知りましたか？</h3>
+							<p>
+								@(select (
+								        field = myForm("howToArriveId"), options = Seq("0"->"お選びください", "1"->"検索サイト", "2"->"ブログ","3"->"バナー広告","4"->"チラシ・ポスター","5"->"新聞・雑誌","6"->"知人の紹介","7"->"その他"), args = 'name -> "unit_area_tdfk"
+								      ))
+							</p>
+							@(inputText(
+								field = myForm("catInfo"), args = 'type -> "hidden"
+								))
+							<p class="post_submit"><input type="submit" name="post_submit" value="確認画面へ" /></p>
+						}
+
+					</div>
+				</div>
+
+				<div id="footer">
+					<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+				</div>
+			</div>
+		</div>
+	</div>
+}

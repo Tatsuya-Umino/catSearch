@@ -1,0 +1,83 @@
+@(message: String, myForm: Form[forms.ContactInfo])
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fieldConstructor.fieldC.f) }
+
+@main("お問い合わせ - ネコサーチ | 迷子猫と保護情報の専用掲示板", true) {
+<body id="contact">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sp_menu()
+			</div>
+
+			<div id="main_wrap">
+				<div id="main_content">
+					<h2>お問い合わせ</h2>
+					<div id="add_320_50_twin">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+
+
+					@form(action=routes.Application.contactFinish()){
+						<table>
+							<tr>
+								<th>お名前<span>(必須)</span></th>
+								<td>
+									@(inputText(
+									field = myForm("contactName"), args = 'class -> "form_text"
+									))
+								</td>
+							</tr>
+							<tr>
+								<th>メールアドレス<span>(必須)</span></th>
+								<td>
+									@(inputText(
+									field = myForm("contactMail"), args = 'class -> "form_text"
+									))
+								</td>
+							</tr>
+							<tr>
+								<th>問い合わせ内容<span>(必須)</span></th>
+								<td>
+									@(textarea(
+									  field = myForm("contactMessage"), args = 'class -> "form_textarea", 'rows -> 4, 'cols -> 5
+									))
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" id="submit_td">
+									<p style="padding:0 20px 10px 20px;text-align:left;">※投稿の削除をご希望の方は、投稿時にお送りしたメールのURLをクリックしてページ右上の「削除」ボタンを押していただくか、<span style="font-weight:bold;">投稿記事のURL</span>と<span style="font-weight:bold;">投稿の際のメールアドレス+氏名</span>を記載下さい。</p>
+									<input type="hidden" name="token" value="ebd0594a860c402be218f44df3865dd5" />
+									<input type="submit" name="submit" id="submit_btn" value="送信する" />
+								</td>
+							</tr>
+						</table>
+					}
+				</div>
+
+				<div id="footer">
+					<address>
+						Copyright &copy; 2016-
+						<a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>
+						. All Rights Reserved.
+					</address>
+
+					<script type="text/javascript">
+					var _gaq = _gaq || [];
+					_gaq.push(['_setAccount', 'UA-21623031-10']);
+					_gaq.push(['_trackPageview']);
+					(function() {
+						var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					})();
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+}

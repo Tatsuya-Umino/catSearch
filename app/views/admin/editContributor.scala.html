@@ -1,0 +1,17 @@
+@(editContributorForm :  Form[forms.EditContributor])
+
+@adminMain("編集") {
+@adminNav()
+	<h1>編集画面</h1>
+	@helper.form(action = routes.AdminController.doEditContributor()) {
+		<input type='hidden' name='contributorId' value='@editContributorForm("contributorId").value' />
+		@helper.inputText(editContributorForm("contributorName"),'_label -> "名前")
+		@helper.inputText(editContributorForm("contributorNickName"),'_label -> "ニックネーム")
+		@helper.inputText(editContributorForm("birthYear"),'_label -> "誕生年")
+		@helper.inputText(editContributorForm("birthMonth"),'_label -> "誕生月")
+		@helper.inputText(editContributorForm("birthDay"),'_label -> "誕生日")
+		@helper.inputText(editContributorForm("mailAddress"),'_label -> "メールアドレス")
+		@helper.inputText(editContributorForm("sex"),'_label -> "性別")
+		<input class='update-confirm' type="submit" value="変更を保存">
+	}
+}

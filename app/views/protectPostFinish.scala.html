@@ -1,0 +1,40 @@
+@(message: String, myForm: Form[forms.postFinishInfo], url: String)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fieldConstructor.fieldC.f) }
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", false) {
+	<body id="post">
+		<div id="wrap">
+			<div id="contents">
+				<div id="nav">
+					@template.sideBar()
+				</div>
+				<div id="main_wrap">
+						<div id="main_content" class="protect">
+							<h2><i class="icon-heart"></i>保護した猫の情報を投稿する</h2>
+							<div id="add_320_50_twin"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+							<div id="form_confirm_box">
+								<h3>投稿を受け付けました</h3>
+								<br>
+								<p>
+									@(textarea(
+								  	field = myForm("url"), args = 'rows -> 4, 'cols -> 70
+									))
+								</p>
+								<p>上記URLは情報提供者の方の連絡先を確認したり、投稿を削除する場合に必要になりますので、ブックマークや画面メモ、印刷
+								などをするなどして、URLを大切に保管してください。<br><br>
+								また、ご登録いただいたメールアドレス宛に、上記の登録管理用のURLを送信いたしました。「test@@test.com」からのメールも大切に保管してください。<br><br>
+								※URLを含むメール文になりますので、迷惑メールフォルダに入らないよう「test@@test.com」を受信可能にしてください。
+								</p>
+							</div>
+						</div>
+						<div id="footer">
+							<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+}

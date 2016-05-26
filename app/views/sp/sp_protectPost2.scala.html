@@ -1,0 +1,71 @@
+@(message: String, myForm: Form[forms.CatInfo], route: play.api.mvc.Call)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fieldConstructor.fieldC.f) }
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", true) {
+<body id="post">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sp_menu()
+			</div>
+			<div id="main_wrap">
+				<div id="main_content" class="protect">
+					<h2><i class="icon-heart"></i>保護した猫の情報を投稿する</h2>
+					<div id="add_320_50_twin">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					</div>
+					<div id="form_box">
+						<ul id="form_pagenate">
+							<li><span>STEP 1</span>最重要情報</li>
+							<li class="current"><span>STEP 2</span>保護した猫の情報</li>
+							<li><span>STEP 3</span>投稿者の情報</li>
+						</ul>
+						@form(action=route){
+							<h3>保護した猫の体毛</h3>
+							<p>
+								@(inputText(
+								field = myForm("bodyColor"), args = 'name -> "unit_body_color", 'class -> "form_text plchld", 'title -> "例 ： 茶色と黒に、ところどころ白"
+								))
+							</p>
+							<h3>保護した猫の目の色</h3>
+							<p>
+								@(inputText(
+								field = myForm("eyesColor"), args = 'name -> "unit_eye_color", 'class -> "form_text plchld", 'title -> "例 ： 濃いグリーン"
+								))
+							</p>
+							<h3>保護した猫の身体の大きさ</h3>
+							<p>
+								@(inputText(
+								field = myForm("bodySize"), args = 'name -> "unit_body_size", 'class -> "form_text plchld", 'title -> "例 ： 小さい（2.5kgくらい)"
+								))
+							</p>			
+							<h3>保護したなった日時</h3>
+							<p>
+								@(inputText(
+								field = myForm("protectionDate"), args = 'name -> "unit_the_time", 'class -> "form_text plchld", 'title -> "例 ： 2016年5月23日の午後16時～17時の間"
+								))
+							</p>
+							<h3>その他の特徴・備考</h3>
+							<p>
+								@(textarea(
+								  field = myForm("remarks"), args = 'name -> "unit_other_feature", 'class -> "plchld", 'title -> "例 : 鳴き声が少しハスキーな感じです", 'rows -> 4, 'cols -> 5
+								))
+							</p>
+							@(inputText(
+								field = myForm("requiredInfo"), args = 'type -> "hidden"
+								))
+							<p class="post_submit"><input type="submit" name="post_submit" value="STEP3へ" /></p>		
+						}
+					</div>
+				</div>
+
+				<div id="footer">
+					<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+				</div>
+			</div>
+		</div>
+	</div>
+}

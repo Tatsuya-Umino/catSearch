@@ -1,0 +1,56 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+# URL?type=[search or protect]探されているか保護されているかを分ける
+# 例. https://localhost:9000/search?type=search
+
+GET     /                           controllers.Application.index()
+GET     /search                     controllers.Application.search()
+POST    /result/:page               controllers.Application.result(page:Integer)
+GET     /result/:page               controllers.Application.result(page:Integer)
+GET     /detail/:id                 controllers.Application.detail(id:Long)
+GET     /post                       controllers.Application.post()
+POST    /post/second                controllers.Application.postSecond()
+POST    /post/third                 controllers.Application.postThird()
+POST    /post/confirm               controllers.Application.postConfirm()
+GET     /post/finish                controllers.Application.postFinish()
+GET     /about                      controllers.Application.about()
+GET     /operation                  controllers.Application.operation()
+GET     /links                      controllers.Application.links()
+GET     /shopping                   controllers.Application.shopping()
+GET     /blogparts                  controllers.Application.blogparts()
+GET     /apiInfo                    controllers.Application.apiInfo()
+GET     /kiyaku                     controllers.Application.kiyaku()
+GET     /privacy                    controllers.Application.privacy()
+GET     /corp                       controllers.Application.corp()
+GET     /contact                    controllers.Application.contact()
+POST    /contact/finish             controllers.Application.contactFinish()
+GET     /detailOwner       		    controllers.Application.detailOwner()
+POST 	/comment/:id  				controllers.Application.postComment(id:Long)
+GET     /delete/:id                 controllers.Application.delete(id:Long)
+
+#admin系
+GET     /admin/login         		controllers.AdminController.login()
+POST    /admin/login        		controllers.AdminController.doLogin()
+GET     /admin/register        		controllers.AdminController.register()
+POST    /admin/register        		controllers.AdminController.doRegister()
+GET     /admin/list                 controllers.AdminController.list()
+POST    /admin/delete               controllers.AdminController.delete()
+GET     /admin/users                controllers.AdminController.adminUsersList()
+POST    /admin/deleteAdminUser      controllers.AdminController.deleteAdminUser()
+GET     /admin/edit/:catId          controllers.AdminController.edit(catId : Long)
+POST    /admin/edit                 controllers.AdminController.doEdit()
+GET  /admin/editComment/:commentId  controllers.AdminController.editComment(commentId : Long)
+POST /admin/editComment             controllers.AdminController.doEditComment()
+GET  /admin/editContributor/:contributorId  controllers.AdminController.editContributor(contributorId : Long)
+POST /admin/editContributor         controllers.AdminController.doEditContributor()
+GET     /admin/logout               controllers.AdminController.doLogout()
+
+#API系
+GET     /api/v1                     controllers.ApiController.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,115 @@
+@(message: String, cat: models.Cat, comments: List[Comment])
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fieldConstructor.fieldC.f) }
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", false) {
+	<body id="unit">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script type="text/javascript">
+		function display() {
+			// 「OK」時の処理 + 確認ダイアログの表示
+			if(window.confirm("削除したデータは元に戻せません。本当にこの情報を削除しますか？")) {
+				location.href = "/delete/@cat.catId";
+			}
+		}
+	</script>
+	<div id="wrap">
+
+	<div id="contents">
+		<div id="nav">
+			@template.sideBar()
+        </div>
+        <div id="main_wrap">
+        		<div id="main_content" class="search">
+        			<h2><i class="icon-bullhorn"></i>Owner 探しています</h2>
+        			<div id="add_320_50_twin"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        			<div id="unit_box">
+        				<div id="unit_pict">
+        					<p><img src="@cat.catImage" width="305" alt="探しています" /></p>
+        					<div id="add_300_250"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="8293715513"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        				</div>
+        				<div id="unit_data">
+        					<p id="delete_box"><a onClick="display()">この記事を削除する</a></p>
+        					<dl>
+                                <dt>投稿者</dt>
+                                <dd>@cat.contributor.contributorName</dd>
+                                <dt>保護した場所</dt>
+                                <dd>@cat.pref.prefName@cat.cityName@cat.address@cat.lastAddress 周辺</dd>
+                                <dt>最大の特徴</dt>
+                                <dd>@cat.standoutFeature</dd>
+                                <dt>体毛の色</dt>
+                                <dd>@cat.bodyColor</dd>
+                                <dt>瞳の色</dt>
+                                <dd>@cat.eyesColor</dd>
+                                <dt>身体の大きさ</dt>
+                                <dd>@cat.bodySize</dd>
+                                <dt>保護した日時</dt>
+                                <dd>@cat.missingDate</dd>
+                                <dt>閲覧者へ向けてのメッセージ</dt>
+                                <dd>@cat.message</dd>
+                            </dl>
+        				</div>
+
+        				<div id="unit_sns">
+        					<h3>この情報を拡散する</h3>
+        					<ul>
+        						<li><a href="#" target="_blank" class="opa"><img src="img/sns_share_buttons_tw.png" alt="Twitterでツイート"></a></li>
+        						<li><a href="#" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;" class="opa"><img src="img/sns_share_buttons_fb.png" alt="Facebookでシェア"></a></li>
+        						<li><a href="#" target="_blank" class="opa"><img src="img/sns_share_buttons_line.png" alt="LINEで送る"></a></li>
+        						<li><a href="#" target="_blank" class="opa"><img src="img/sns_share_buttons_mail.png" alt="メールで知らせる"></a></li>
+        					</ul>
+        				</div>
+        			</div>
+
+        			<a name="comment_top" id="comment_top"></a>
+        			<div id="unit_comments">
+
+                    @if(!comments.isEmpty()){
+                        <div id="unit_comment_view_box">
+                            <h3><i class="icon-comments"></i> COMMENTS</h3>
+                            <div id="unit_comments_box">
+                            @for(data <- comments){
+                                <ul>
+                                    <li>
+                                        <h4>@data.commentTitle</h4>
+                                        <p class="unit_comment_posttime">@data.createTs @data.commentName</p>
+                                        <a href="mailto:@data.mailAddress">このユーザーにメールする</a>
+                                        <div>@data.commentMessage</div>
+                                        <p class="unit_comment_postpict">
+                                        @if(data.commentImage == null){
+                                        }else{
+                                            <a href="@data.commentImage" class="clrbox opa">
+                                                <img src="@data.commentImage" width="150" alt="" />
+                                            </a>
+                                        }
+                                        </p>
+                                    </li>
+                                </ul>
+                            }
+                            </div>
+                        </div>
+                    }
+
+        				<div id="comment_box">
+
+        				</div>
+        			</div>
+        		</div>
+
+        		<div id="footer">
+        			<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+        		</div>
+        	</div>
+        </div>
+     </div>
+ </body>
+}

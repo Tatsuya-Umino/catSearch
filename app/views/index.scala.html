@@ -1,0 +1,69 @@
+@(message: String, cats: List[Cat])
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", false){ 
+<body id="index">
+    	<div id="wrap">
+    		<div id="contents">
+    			<div id="nav">
+        			@template.sideBar()
+        		</div>
+        		<div id="main_wrap">
+	<p id="eyecatch" class="wrapbox"><img src="@routes.Assets.at("images/eyecatch.jpg")" height="370" width="620" alt="家族の一員として過ごした日々が、少しの不注意で「戻らない日々」になってしまうのは、悲しすぎます。ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" /></p>
+
+			<div id="newest">
+				<h2><i class="icon-comments-alt"></i>最近投稿された情報 一覧</h2>
+				<ul>
+					@for(data <- cats){
+
+						@if(data.flg == 0){
+							<li class="searching">
+							<h3><i class="icon-bullhorn"></i> 探しています<span>@data.missingDate</span></h3>
+							<p><a href="/detail/@data.catId?type=search" class="opa"><img src="@data.catImage" width="305" alt="探しています" /></a></p>
+						}else{
+							<li class="protecting">
+							<h3><i class="icon-bullhorn"></i> 保護しました<span>@data.missingDate</span></h3>
+							<p><a href="/detail/@data.catId?type=protect" class="opa"><img src="@data.catImage" width="305" alt="保護しました"></a></p>
+						}
+
+						<dl>
+							<dt>迷子になった場所</dt>
+							<dd>@data.pref.prefName@data.cityName@data.address 周辺</dd>
+							<dt>体毛の色</dt>
+							<dd>@data.bodyColor</dd>
+							<dt>瞳の色</dt>
+							<dd>@data.eyesColor</dd>
+							<dt>特徴</dt>
+							<dd>@data.standoutFeature</dd>
+						</dl>
+						@if(data.flg == 0){
+							<p class="moreread"><i class="icon-double-angle-right"></i><a href="/detail/@data.catId?type=search">詳細を読む</a></p>
+						}else{
+							<p class="moreread"><i class="icon-double-angle-right"></i><a href="/detail/@data.catId?type=protect">詳細を読む</a></p>
+						}
+							</li>
+					}
+
+					</ul>
+			</div>
+			<div id="footer">
+        				<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+
+        				<script type="text/javascript">
+        					var _gaq = _gaq || [];
+        					_gaq.push(['_setAccount', 'UA-21623031-10']);
+        					_gaq.push(['_trackPageview']);
+        					(function() {
+        						var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        					})();
+        				</script>
+        	</div>
+        	</div>
+		</div>
+	</div>
+</body>
+}
+
+    
+

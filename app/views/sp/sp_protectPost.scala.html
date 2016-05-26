@@ -1,0 +1,86 @@
+@(message: String, myForm: Form[forms.RequiredInfo], opts: List[Tuple2[String, String]], route: play.api.mvc.Call)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fieldConstructor.fieldC.f) }
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", true) {
+<body id="post">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sp_menu()
+			</div>
+			<div id="main_wrap">
+				<div id="main_content" class="protect">
+					<h2><i class="icon-heart"></i>保護した猫の情報を投稿する</h2>
+					<div id="add_320_50_twin">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					</div>
+					<div id="form_box">
+						<ul id="form_pagenate">
+							<li class="current"><span>STEP 1</span>最重要情報</li>
+							<li><span>STEP 2</span>保護した猫の情報</li>
+							<li><span>STEP 3</span>投稿者の情報</li>
+						</ul>
+						@form(action=route, 'enctype -> "multipart/form-data"){
+							<h3>保護した住所<span>町村以降は非公開になります</span></h3>
+							<h4>都道府県</h4>
+							<p>
+								@(select (
+								        field = myForm("prefId"), options = opts, args = 'name -> "unit_area_tdfk"
+								      ))
+							</p>
+							<h4>市区郡</h4>
+							<p>
+								@(inputText(
+								field = myForm("cityName"), args = 'name -> "unit_area_skgn", 'class -> "form_text plchld", 'title -> "例 : 猫山区"
+								))
+							</p>
+							<h4>町村</h4>
+							<p>
+								@(inputText(
+								field = myForm("address"), args = 'name -> "unit_area_cs", 'class -> "form_text plchld", 'title -> "例 : 猫谷町"
+								))
+							</p>
+							<h4>丁番地以降<span>公開されません</span></h4>
+							<p>
+								@(inputText(
+								field = myForm("lastAddress"), args = 'name -> "unit_area_bc", 'class -> "form_text plchld", 'title -> "例 : 1-2-3 ネコノビル405"
+								))
+							</p>
+							<h3>保護した猫の一番の特徴<span>詳細な特徴は STEP2 で別途記入できます。</span></h3>
+							<p>
+								@(inputText(
+								field = myForm("standoutFeature"), args = 'name -> "unit_best_feature", 'class -> "form_text plchld", 'title -> "例 : 小太りで右耳に手術の痕があります"
+								))
+							</p>
+							<h3>保護した猫の画像<span>画像ファイル名に日本語や空白があると、正しく取得できない場合があります。</span></h3>
+							<p>
+								@(inputFile(
+								field = myForm("imagePath"), args = 'size -> 10, 'name -> "unit_pict", 'class -> "form_text"
+								))
+							</p>
+							<h3>マイクロチップ識別番号</h3>
+							<p>
+								@(inputText(
+								field = myForm("microNum"), args = 'name -> "unit_microchip_num", 'class -> "form_text plchld", 'title -> "例 : 123456789012345", 'type -> "number"
+								))
+							</p>
+							<h3>閲覧者へ向けてのメッセージ</h3>
+							<p>
+								@(textarea(
+								  field = myForm("message"), args = 'name -> "unit_message", 'class -> "plchld", 'title -> "例 : 些細な情報でも構いませんのでご連絡下さい", 'rows -> 4, 'cols -> 5
+								))
+							</p>
+							<p class="post_submit"><input type="submit" name="post_submit" value="STEP2へ" /></p>
+						}
+					</div>
+				</div>
+				<div id="footer">
+					<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+				</div>
+			</div>
+		</div>
+	</div>
+}

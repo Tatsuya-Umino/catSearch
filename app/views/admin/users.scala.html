@@ -1,0 +1,30 @@
+@(pagingDto :  dto.AdminUsersPagingDto)
+
+@adminMain("一覧") {
+@adminNav()
+	<h1>ユーザー一覧</h1>
+	<table class='table'>
+		<tr>
+			<th>ユーザー名</th>
+			<th>登録日時</th>
+			<th>削除ボタン</th>
+		</tr>
+		@for(user <- pagingDto.adminUsers) {
+			<tr>
+				<td>
+				@user.adminUserName
+				</td>
+				<td>
+				@user.createTs
+				</td>
+				<td>
+				@helper.form(action = routes.AdminController.deleteAdminUser()) {
+					<input type='hidden' name='userId' value='@user.adminUserId' />
+					<input type='submit' value='削除'>
+				}
+				</td>
+			</tr>
+		}
+	</table>
+	@userPagenate(pagingDto.currentPage,pagingDto.totalPageCount)
+}

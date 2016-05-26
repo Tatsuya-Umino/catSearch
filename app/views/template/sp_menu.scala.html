@@ -1,0 +1,82 @@
+@()
+
+<script type="text/javascript">
+$(function(){
+	// メニュー開閉
+	$('#menu_btn a').on('click', function(){
+		if($(this).find('i').attr('class') == 'icon-collapse'){
+			$(this).find('i').attr('class', 'icon-collapse-top');
+			$(this).parent('p').next('div').css('display', 'block');
+		} else {
+			$(this).find('i').attr('class', 'icon-collapse');
+			$(this).parent('p').next('div').css('display', 'none');
+		}
+	});
+});
+</script>
+
+<div id="nav" style="background-image: url(@routes.Assets.at("images/bg_nav.gif"));">
+		<div class="menu_index">
+			<h1 id="logo">
+				<a href="/" class="opa">
+					<img src="@routes.Assets.at("images/logo.png")" alt="ネコサーチ | 迷子猫と保護情報の専用掲示板 - ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" />
+				</a>
+			</h1>
+			<p id="menu_btn">
+				<a href="#"><i class="icon-collapse"></i></a>
+			</p>
+
+			<div id="drop_menu">
+				<div id="nav_search">
+					<h2><i class="icon-bullhorn"></i> 探しています</h2>
+					<div>
+						<a href="/post?type=search" class="opa">
+							<span>探している猫の情報を<span><span>投</span>稿する</span></span>
+							<i class="icon-edit"></i>
+						</a>
+					</div>
+					<div class="with_border">
+						<a href="/search?type=protect" class="opa">
+							<span>保護されている猫の情報を<span><span>検</span>索する</span></span>
+							<i class="icon-search"></i>
+						</a>
+					</div>
+				</div>
+				<div id="nav_protect">
+					<h2><i class="icon-heart"></i> 保護しました</h2>
+					<div>
+						<a href="/post?type=protect" class="opa">
+							<span>保護した猫の情報を<span><span>投</span>稿する</span></span>
+							<i class="icon-edit"></i>
+						</a>
+					</div>
+					<div class="with_border">
+						<a href="/search?type=search" class="opa">
+							<span>探されている猫の情報を<span><span>検</span>索する</span></span>
+							<i class="icon-search"></i>
+						</a>
+					</div>
+				</div>
+
+					<ul id="nav_about">
+					<li><i class="icon-info-sign"></i> <a href="/about">ネコサーチとは</a></li>
+					<li><i class="icon-question-sign"></i> <a href="/operation">迷子かも？と思ったら</a></li>
+					<li><i class="icon-phone-sign"></i> <a href="/links">各種関連リンク集</a></li>
+					<li><i class="icon-shopping-cart"></i> <a href="/shopping">お買い物コーナー</a></li>
+				</ul>
+
+				<ul id="nav_others">
+						<li><a href="/kiyaku">ご利用規約</a></li>
+					<li><a href="/privacy">プライバシーポリシー</a></li>
+					<li><a href="/corp">運営者概要</a></li>
+					<li><a href="/contact">お問い合わせ</a></li>
+				</ul>
+
+				<ul id="nav_sns">
+					<li><a href="https://twitter.com/nekosearch" class="opa" target="_blank"><img src="@routes.Assets.at("images/twitter.png")" alt="twitter" /></a></li>
+					<li><a href="https://www.facebook.com/nekosearch" class="opa" target="_blank"><img src="@routes.Assets.at("images/facebook.png")" alt="facebook" /></a></li>
+					<li><a href="rss.rdf" class="opa" target="_blank"><img src="@routes.Assets.at("images/rss.png")" alt="RSS" /></a></li>
+				</ul>
+		</div>
+	</div>
+</div>

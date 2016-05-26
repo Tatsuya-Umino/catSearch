@@ -1,0 +1,15 @@
+@(adminUserForm : Form[forms.AdminUserForm])
+
+@adminMain("ログイン") {
+    <div class='row'>
+    <h1>ログイン</h1>
+    @helper.form(action = routes.AdminController.doLogin()) {
+		@helper.inputText(adminUserForm("adminUserName"),'_label -> "アカウント名")
+		@helper.inputText(adminUserForm("adminUserPassword"),'_label -> "パスワード")
+		<input type='submit' value='送信' />
+	}
+	</div>
+	<div class='row' style='margin-top : 10px;'>
+	<a href="@controllers.routes.AdminController.register()">新規登録はこちらから</a>
+	</div>
+}

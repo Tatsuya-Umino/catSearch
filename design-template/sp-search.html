@@ -1,0 +1,411 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>保護されている猫の情報を検索する - ネコサーチ | 迷子猫と保護情報の専用掲示板</title>
+<meta name="Keywords" content="迷子猫,迷い猫,掲示板,捜索,保護情報,検索,地域別,ペット,情報交換,ネコサーチ" />
+<meta name="Description" content="ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" />
+<meta name="robots" content="index,follow" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="google-site-verification" content="186LgNPbXisb_vN2QKq8p1s_tXFiyvX_3qC2oVacKyQ" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta property="og:site_name" content="ネコサーチ" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="保護されている猫の情報を検索する - ネコサーチ | 迷子猫と保護情報の専用掲示板" />
+<meta property="og:description" content="ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" />
+<meta property="og:url" content="http://www.neko-search.com/" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:image" content="http://www.neko-search.com/img/ogp.jpg" />
+<meta property="image_src" content="http://www.neko-search.com/img/ogp.jpg" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nekosearch">
+
+<link type="image/png" rel="icon" href="img/favicon.png" />
+<link rel="shortcut icon" href="img/favicon.png" />
+<link rel="apple-touch-icon" href="img/favicon.png" />
+
+<link type="text/css" rel="stylesheet" href="css/reset.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/font.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/style_sp.css" media="all" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/plhd.js"></script>
+
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="css/font-ie.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/ie.css" media="all" />
+<![endif]-->
+
+<!-- Dot metrix -->
+<script type='text/javascript'>
+  (function(doc, dm) {
+    if (!dm.VERSION) {
+      window.dotmetrix = dm;
+
+      dm._queue = [];
+      dm.init = function(api_token, b, c) {
+        dm.API_TOKEN = api_token;
+        function f(dm, fname) { dm[fname] = function() { dm._queue.push([fname].concat([].slice.call(arguments, 0))); } }
+        var functions = 'track identify set'.split(' ');
+        for (var i = 0; i < functions.length; i++) f(dm, functions[i]);
+      };
+
+      s = doc.createElement("script"); s.type = "text/javascript"; s.async = !0; s.src = "https://api.dot-metrix.com/dot-metrix.p.js"; e = doc.getElementsByTagName("script")[0]; e.parentNode.insertBefore(s, e);
+    }
+  })(document, window.dotmetrix || {});
+  dotmetrix.init('F2adUPrfEpNxvAcA3nyq');
+</script>
+<!-- /Dot metrix --></head>
+<body id="search">
+<div id="wrap">
+
+<div id="contents">
+	<div id="nav">
+		<div class="menu_index">
+			<h1 id="logo"><a href="http://www.neko-search.com/" class="opa"><img src="img/logo.png" alt="ネコサーチ | 迷子猫と保護情報の専用掲示板 - ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" /></a></h1>
+				<p id="menu_btn"><a href="#"><i class="icon-collapse"></i></a></p>
+
+<div id="drop_menu">			<div id="nav_search">
+				<h2><i class="icon-bullhorn"></i> 探しています</h2>
+				<div>
+					<a href="post_first.php?type=search" class="opa">
+						<span>探している猫の情報を<span><span>投</span>稿する</span></span>
+						<i class="icon-edit"></i>
+					</a>
+				</div>
+				<div class="with_border">
+					<a href="search.php?type=protect" class="opa">
+						<span>保護されている猫の情報を<span><span>検</span>索する</span></span>
+						<i class="icon-search"></i>
+					</a>
+				</div>
+			</div>
+			<div id="nav_protect">
+				<h2><i class="icon-heart"></i> 保護しました</h2>
+				<div>
+					<a href="post_first.php?type=protect" class="opa">
+						<span>保護した猫の情報を<span><span>投</span>稿する</span></span>
+						<i class="icon-edit"></i>
+					</a>
+				</div>
+				<div class="with_border">
+					<a href="search.php?type=search" class="opa">
+						<span>探されている猫の情報を<span><span>検</span>索する</span></span>
+						<i class="icon-search"></i>
+					</a>
+				</div>
+			</div>
+
+				<ul id="nav_about">
+				<li><i class="icon-info-sign"></i> <a href="about.php">ネコサーチとは</a></li>
+				<li><i class="icon-question-sign"></i> <a href="operation.php">迷子かも？と思ったら</a></li>
+				<li><i class="icon-phone-sign"></i> <a href="links.php">各種関連リンク集</a></li>
+				<li><i class="icon-shopping-cart"></i> <a href="shopping.php">お買い物コーナー</a></li>
+			</ul>
+
+			<ul id="nav_others">
+					<li><a href="kiyaku.php">ご利用規約</a></li>
+				<li><a href="privacy.php">プライバシーポリシー</a></li>
+				<li><a href="corp.php">運営者概要</a></li>
+				<li><a href="contact.php">お問い合わせ</a></li>
+			</ul>
+
+			<ul id="nav_sns">
+				<li><a href="https://twitter.com/nekosearch" class="opa" target="_blank"><img src="img/twitter.png" alt="twitter" /></a></li>
+				<li><a href="https://www.facebook.com/nekosearch" class="opa" target="_blank"><img src="img/facebook.png" alt="facebook" /></a></li>
+				</ul>
+		</div>
+</div>	</div>
+
+	<div id="main_wrap">
+		<div id="main_content" class="protect">
+			<h2><i class="icon-heart"></i>保護されている猫の<br />情報を検索する</h2>
+			<div id="add_300_250"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="8293715513"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+			<div id="form_box">
+				<form action="?type=protect" method="post">
+					<h3>保護した住所</h3>
+					<div class="form_search_block">
+						<h4>都道府県<span>必須</span></h4>
+						<p>
+							<select name="search_area_tdfk">
+<option value="x" selected="selected">都道府県を選択して下さい</option>
+<option value="北海道">北海道</option>
+<option value="青森県">青森県</option>
+<option value="岩手県">岩手県</option>
+<option value="宮城県">宮城県</option>
+<option value="秋田県">秋田県</option>
+<option value="山形県">山形県</option>
+<option value="福島県">福島県</option>
+<option value="茨城県">茨城県</option>
+<option value="栃木県">栃木県</option>
+<option value="群馬県">群馬県</option>
+<option value="埼玉県">埼玉県</option>
+<option value="千葉県">千葉県</option>
+<option value="東京都">東京都</option>
+<option value="神奈川県">神奈川県</option>
+<option value="山梨県">山梨県</option>
+<option value="長野県">長野県</option>
+<option value="新潟県">新潟県</option>
+<option value="富山県">富山県</option>
+<option value="石川県">石川県</option>
+<option value="福井県">福井県</option>
+<option value="岐阜県">岐阜県</option>
+<option value="静岡県">静岡県</option>
+<option value="愛知県">愛知県</option>
+<option value="三重県">三重県</option>
+<option value="滋賀県">滋賀県</option>
+<option value="京都府">京都府</option>
+<option value="大阪府">大阪府</option>
+<option value="兵庫県">兵庫県</option>
+<option value="奈良県">奈良県</option>
+<option value="和歌山県">和歌山県</option>
+<option value="鳥取県">鳥取県</option>
+<option value="島根県">島根県</option>
+<option value="岡山県">岡山県</option>
+<option value="広島県">広島県</option>
+<option value="山口県">山口県</option>
+<option value="徳島県">徳島県</option>
+<option value="香川県">香川県</option>
+<option value="愛媛県">愛媛県</option>
+<option value="高知県">高知県</option>
+<option value="福岡県">福岡県</option>
+<option value="佐賀県">佐賀県</option>
+<option value="長崎県">長崎県</option>
+<option value="熊本県">熊本県</option>
+<option value="大分県">大分県</option>
+<option value="宮崎県">宮崎県</option>
+<option value="鹿児島県">鹿児島県</option>
+<option value="沖縄県">沖縄県</option>
+							</select>
+						</p>
+					</div>
+					<div class="form_search_block">
+						<h4>市区郡</h4>
+						<p><input type="text" name="search_area_skgn" class="form_text plchld" value="" title="例 ： 猫山区" /></p>
+					</div>
+					<div class="form_search_block">
+						<h4>町村</h4>
+						<p><input type="text" name="search_area_cs" class="form_text plchld" value="" title="例 ： 猫谷町" /></p>
+					</div>
+					<h3 class="search_keyword">検索キーワード</h3>
+					<div class="form_search_block">
+						<p><input type="text" name="search_keyword" class="form_text plchld" value="" title="例 ： 赤い首輪" /></p>
+					</div>
+					<p class="post_submit"><input type="submit" name="submit" value="この内容で検索する" /></p>
+					<p class="post_submit"><a href="search_geo.php?type=protect">現在地から検索する</a></p>
+				</form>
+			</div>
+
+			<h2><i class="icon-comments-alt"></i>保護されている猫の<br />新着情報</h2>
+			<ul id="searched_box">
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/18</span></h3>
+					<p><a href="unit.php?id=2938" class="opa"><img src="img/units/nophoto.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>佐賀県三養基郡みやき町西島 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>キジと白が混ざってます。</dd>
+								<dt>瞳の色</dt>
+						<dd>黒</dd>
+							<dt>特徴</dt>
+						<dd>キジと白の模様で首輪があります。</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2938">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/18</span></h3>
+					<p><a href="unit.php?id=2937" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>埼玉県八潮市八條 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>白が多い三毛</dd>
+								<dt>瞳の色</dt>
+						<dd>黄色</dd>
+							<dt>特徴</dt>
+						<dd>三毛</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2937">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/18</span></h3>
+					<p><a href="unit.php?id=2936" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>徳島県徳島市助任橋 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>白黒で所々に黒があり、白が強いです。尻尾は黒です。</dd>
+								<dt>瞳の色</dt>
+						<dd>黄色</dd>
+							<dt>特徴</dt>
+						<dd>白と黒で白の割合が多い、しっぽが黒</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2936">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/17</span></h3>
+					<p><a href="unit.php?id=2935" class="opa"><img src="img/units/sample.png" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>千葉県松戸市西馬橋蔵元町 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>キジトラ（茶色）</dd>
+								<dt>瞳の色</dt>
+						<dd>オリーブグリーン</dd>
+							<dt>特徴</dt>
+						<dd>茶色のアメリカンショートヘア・子猫</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2935">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/17</span></h3>
+					<p><a href="unit.php?id=2927" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>愛知県名古屋市西区城西 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>白っぽく耳と尻尾が黒い</dd>
+								<dt>瞳の色</dt>
+						<dd>水色</dd>
+							<dt>特徴</dt>
+						<dd>白、耳と尻尾が黒い。</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2927">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/16</span></h3>
+					<p><a href="unit.php?id=2925" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>熊本県上益城郡益城町安永 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>白</dd>
+								<dt>瞳の色</dt>
+						<dd>ブルー</dd>
+							<dt>特徴</dt>
+						<dd>ラグドール系？大型　白　長毛　オス</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2925">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/16</span></h3>
+					<p><a href="unit.php?id=2922" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>愛知県豊橋市牛川町 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>白に焦げ茶のトラ柄のぶちがあります。</dd>
+								<dt>瞳の色</dt>
+						<dd>きいろ</dd>
+							<dt>特徴</dt>
+						<dd>白い毛並みにこげ茶のトラ柄のぶちがあります。しっぽが丸まっています。左耳に去勢手術のしたあとがあります。</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2922">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/16</span></h3>
+					<p><a href="unit.php?id=2921" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>栃木県宇都宮市池上町 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>真っ白</dd>
+								<dt>瞳の色</dt>
+						<dd>黄色</dd>
+							<dt>特徴</dt>
+						<dd>真っ白 黄色の目 痩せて身体が長い 長い尻尾</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2921">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/15</span></h3>
+					<p><a href="unit.php?id=2919" class="opa"><img src="img/units/nophoto.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>千葉県長生郡白子町 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>シルバーに黒のライン。アメショーです。</dd>
+								<dt>瞳の色</dt>
+						<dd>不明</dd>
+							<dt>特徴</dt>
+						<dd>耳垂れのアメリカンショートヘア</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2919">詳細を読む</a></p>
+				</li>
+				<li class="protecting">
+					<h3><i class="icon-heart"></i> 保護しました<span>2016.05/15</span></h3>
+					<p><a href="unit.php?id=2915" class="opa"><img src="img/units/sample.jpg" width="305" alt="保護しました" /></a></p>
+					<dl>
+						<dt>保護した場所</dt>
+						<dd>東京都足立区扇 周辺</dd>
+							<dt>体毛の色</dt>
+						<dd>キジトラ</dd>
+								<dt>瞳の色</dt>
+						<dd>黄色</dd>
+							<dt>特徴</dt>
+						<dd>ポッチャリキジトラ</dd>
+					</dl>
+					<p class="moreread"><i class="icon-double-angle-right"></i> <a href="unit.php?id=2915">詳細を読む</a></p>
+				</li>
+			</ul>
+		</div>
+
+		<div id="footer">
+			<address>Copyright &copy; 2016- <br /><a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+<p id="to_top"><a href="#"><i class="icon-double-angle-up"></i></a></p>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-21623031-10']);
+_gaq.push(['_trackPageview']);
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+		</div>
+	</div>
+</div>
+
+</div>
+<script type="text/javascript">
+$(function(){
+
+	$('a[href^=#]').click(function(){
+		var speed = 1000;
+		var href= $(this).attr("href");
+		var target = $(href == "#" || href == "" ? 'html' : href);
+		var position = target.offset().top;
+		$("html, body").animate({scrollTop:position-50}, speed, "swing");
+		return false;
+	});
+
+	// プレースホルダー
+	var plhd_text;
+	$('.plchld').each(function(){
+		plhd_text = $(this).attr('title');
+		$(this).attr('placeholder', plhd_text).removeAttr('title');
+	});
+
+	// メニュー開閉
+	$('#menu_btn a').on('click', function(){
+		if($(this).find('i').attr('class') == 'icon-collapse'){
+			$(this).find('i').attr('class', 'icon-collapse-top');
+			$(this).parent('p').next('div').css('display', 'block');
+		} else {
+			$(this).find('i').attr('class', 'icon-collapse');
+			$(this).parent('p').next('div').css('display', 'none');
+		}
+	});
+});
+</script>
+</body>
+</html>

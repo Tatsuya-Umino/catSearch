@@ -1,0 +1,10 @@
+@(adminUserForm: Form[forms.AdminUserForm])
+
+@adminMain("新規登録") {
+    <h1>新規登録</h1>
+    @helper.form(action = routes.AdminController.doRegister()) {
+		@helper.inputText(adminUserForm("adminUserName"),'_label -> "アカウント名")
+		@helper.inputText(adminUserForm("adminUserPassword"),'_label -> "パスワード")
+		<input type='submit' value='送信' />
+	}
+}

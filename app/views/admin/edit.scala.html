@@ -1,0 +1,34 @@
+@(editCatForm :  Form[forms.EditCat])
+
+@adminMain("編集") {
+@adminNav()
+	<h1>編集画面</h1>
+	@helper.form(action = routes.AdminController.doEdit(),
+	'enctype -> "multipart/form-data") {
+		<input type='hidden' name='catId' value='@editCatForm("catId").value' />
+		@helper.inputText(editCatForm("catName"),'_label -> "猫の名前")
+		@helper.inputText(editCatForm("cityName"),'_label -> "市町村")
+		@helper.inputText(editCatForm("address"),'_label -> "住所")
+		@helper.inputText(editCatForm("lastAddress"),'_label -> "詳細住所")
+		@helper.inputText(editCatForm("microNum"),'_label -> "マイクロチップ番号")
+		@helper.inputText(editCatForm("standoutFeature"),'_label -> "特徴")
+        @helper.inputText(editCatForm("bodyColor"),'_label -> "保護した猫の体毛色")
+        @helper.inputText(editCatForm("eyesColor"),'_label -> "保護した猫の眼の色")
+        @helper.inputText(editCatForm("bodySize"),'_label -> "保護した猫の身体の大きさ")
+		@helper.inputText(editCatForm("missingDate"),'_label -> "迷子になった日時")
+        @helper.inputText(editCatForm("message"),'_label -> "閲覧者へ向けてのメッセージ")
+        @helper.inputText(editCatForm("remarks"),'_label -> "その他の特徴・備考")
+        <dl>
+    		<dt>
+    			<label for="img">
+    				画像を更新<input type="file" name="catPicture">
+    				画像を削除<input type='checkbox' name='deletePic' />
+    			</label>
+			</dt>
+    		<dd>
+				<img src='@editCatForm("catImage").value' />
+			</dd>
+		</dl>
+		<input class='update-confirm' type="submit" value="変更を保存">
+	}
+}

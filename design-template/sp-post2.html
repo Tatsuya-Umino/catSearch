@@ -1,0 +1,203 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>探している猫の情報を投稿する - ネコサーチ | 迷子猫と保護情報の専用掲示板</title>
+<meta name="Keywords" content="迷子猫,迷い猫,掲示板,捜索,保護情報,検索,地域別,ペット,情報交換,ネコサーチ" />
+<meta name="Description" content="ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" />
+<meta name="robots" content="index,follow" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="google-site-verification" content="186LgNPbXisb_vN2QKq8p1s_tXFiyvX_3qC2oVacKyQ" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta property="og:site_name" content="ネコサーチ" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="探している猫の情報を投稿する - ネコサーチ | 迷子猫と保護情報の専用掲示板" />
+<meta property="og:description" content="ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" />
+<meta property="og:url" content="http://www.neko-search.com/" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:image" content="http://www.neko-search.com/img/ogp.jpg" />
+<meta property="image_src" content="http://www.neko-search.com/img/ogp.jpg" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nekosearch">
+
+<link type="image/png" rel="icon" href="img/favicon.png" />
+<link rel="shortcut icon" href="img/favicon.png" />
+<link rel="apple-touch-icon" href="img/favicon.png" />
+
+<link type="text/css" rel="stylesheet" href="css/reset.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/font.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/style_sp.css" media="all" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/plhd.js"></script>
+
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="css/font-ie.css" media="all" />
+<link type="text/css" rel="stylesheet" href="css/ie.css" media="all" />
+<![endif]-->
+
+<!-- Dot metrix -->
+<script type='text/javascript'>
+  (function(doc, dm) {
+    if (!dm.VERSION) {
+      window.dotmetrix = dm;
+
+      dm._queue = [];
+      dm.init = function(api_token, b, c) {
+        dm.API_TOKEN = api_token;
+        function f(dm, fname) { dm[fname] = function() { dm._queue.push([fname].concat([].slice.call(arguments, 0))); } }
+        var functions = 'track identify set'.split(' ');
+        for (var i = 0; i < functions.length; i++) f(dm, functions[i]);
+      };
+
+      s = doc.createElement("script"); s.type = "text/javascript"; s.async = !0; s.src = "https://api.dot-metrix.com/dot-metrix.p.js"; e = doc.getElementsByTagName("script")[0]; e.parentNode.insertBefore(s, e);
+    }
+  })(document, window.dotmetrix || {});
+  dotmetrix.init('F2adUPrfEpNxvAcA3nyq');
+</script>
+<!-- /Dot metrix --></head>
+<body id="post">
+<div id="wrap">
+
+<div id="contents">
+	<div id="nav">
+		<div class="menu_index">
+			<h1 id="logo"><a href="http://www.neko-search.com/" class="opa"><img src="img/logo.png" alt="ネコサーチ | 迷子猫と保護情報の専用掲示板 - ネコサーチは、迷子の猫と飼い主が無事に再会できるように、だれでも投稿・検索ができる簡単さと、個人情報の安全性に配慮をした、無料の掲示板サイトです。" /></a></h1>
+				<p id="menu_btn"><a href="#"><i class="icon-collapse"></i></a></p>
+
+<div id="drop_menu">			<div id="nav_search">
+				<h2><i class="icon-bullhorn"></i> 探しています</h2>
+				<div>
+					<a href="post_first.php?type=search" class="opa">
+						<span>探している猫の情報を<span><span>投</span>稿する</span></span>
+						<i class="icon-edit"></i>
+					</a>
+				</div>
+				<div class="with_border">
+					<a href="search.php?type=protect" class="opa">
+						<span>保護されている猫の情報を<span><span>検</span>索する</span></span>
+						<i class="icon-search"></i>
+					</a>
+				</div>
+			</div>
+			<div id="nav_protect">
+				<h2><i class="icon-heart"></i> 保護しました</h2>
+				<div>
+					<a href="post_first.php?type=protect" class="opa">
+						<span>保護した猫の情報を<span><span>投</span>稿する</span></span>
+						<i class="icon-edit"></i>
+					</a>
+				</div>
+				<div class="with_border">
+					<a href="search.php?type=search" class="opa">
+						<span>探されている猫の情報を<span><span>検</span>索する</span></span>
+						<i class="icon-search"></i>
+					</a>
+				</div>
+			</div>
+
+				<ul id="nav_about">
+				<li><i class="icon-info-sign"></i> <a href="about.php">ネコサーチとは</a></li>
+				<li><i class="icon-question-sign"></i> <a href="operation.php">迷子かも？と思ったら</a></li>
+				<li><i class="icon-phone-sign"></i> <a href="links.php">各種関連リンク集</a></li>
+				<li><i class="icon-shopping-cart"></i> <a href="shopping.php">お買い物コーナー</a></li>
+			</ul>
+
+			<ul id="nav_others">
+					<li><a href="kiyaku.php">ご利用規約</a></li>
+				<li><a href="privacy.php">プライバシーポリシー</a></li>
+				<li><a href="corp.php">運営者概要</a></li>
+				<li><a href="contact.php">お問い合わせ</a></li>
+			</ul>
+
+			<ul id="nav_sns">
+				<li><a href="https://twitter.com/nekosearch" class="opa" target="_blank"><img src="img/twitter.png" alt="twitter" /></a></li>
+				<li><a href="https://www.facebook.com/nekosearch" class="opa" target="_blank"><img src="img/facebook.png" alt="facebook" /></a></li>
+				</ul>
+		</div>
+</div>	</div>
+
+	<div id="main_wrap">
+		<div id="main_content" class="search">
+			<h2><i class="icon-bullhorn"></i>探している猫の情報を投稿する</h2>
+			<div id="add_300_250"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="8293715513"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+			<div id="form_box">
+				<ul id="form_pagenate">
+					<li><span>STEP 1</span>最重要情報</li>
+					<li class="current"><span>STEP 2</span>探している猫の情報</li>
+					<li><span>STEP 3</span>投稿者の情報</li>
+				</ul>
+				<form action="post_second.php" method="post" enctype="multipart/form-data">
+					<h3>探している猫の体毛色</h3>
+										<p><input type="text" name="unit_body_color" class="form_text plchld" value="" title="例 ： 茶色と黒に、ところどころ白" /></p>
+					<h3>探している猫の眼の色</h3>
+										<p><input type="text" name="unit_eye_color" class="form_text plchld" value="" title="例 ： 濃いグリーン" /></p>
+					<h3>探している猫の身体の大きさ</h3>
+										<p><input type="text" name="unit_body_size" class="form_text plchld" value="" title="例 ： 小さい（2.5kgくらい）" /></p>
+					<h3>迷子になった日時</h3>
+										<p><input type="text" name="unit_the_time" class="form_text plchld" value="" title="例 ： 2016年5月18日の午後16時～17時の間" /></p>
+					<h3>その他の特徴・備考</h3>
+										<p><textarea name="unit_other_feature" title="例 ： 鳴き声が少しハスキーな感じです" class="plchld" rows="4" cols="5"></textarea></p>
+					<p class="post_submit"><input type="submit" name="post_submit" value="STEP3へ" /></p>
+				</form>
+			</div>
+		</div>
+
+		<div id="footer">
+			<address>Copyright &copy; 2016- <br /><a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+<p id="to_top"><a href="#"><i class="icon-double-angle-up"></i></a></p>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-21623031-10']);
+_gaq.push(['_trackPageview']);
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+		</div>
+	</div>
+</div>
+
+</div>
+<script type="text/javascript">
+$(function(){
+
+	$('a[href^=#]').click(function(){
+		var speed = 1000;
+		var href= $(this).attr("href");
+		var target = $(href == "#" || href == "" ? 'html' : href);
+		var position = target.offset().top;
+		$("html, body").animate({scrollTop:position-50}, speed, "swing");
+		return false;
+	});
+
+	// プレースホルダー
+	var plhd_text;
+	$('.plchld').each(function(){
+		plhd_text = $(this).attr('title');
+		$(this).attr('placeholder', plhd_text).removeAttr('title');
+	});
+
+	// メニュー開閉
+	$('#menu_btn a').on('click', function(){
+		if($(this).find('i').attr('class') == 'icon-collapse'){
+			$(this).find('i').attr('class', 'icon-collapse-top');
+			$(this).parent('p').next('div').css('display', 'block');
+		} else {
+			$(this).find('i').attr('class', 'icon-collapse');
+			$(this).parent('p').next('div').css('display', 'none');
+		}
+	});
+});
+</script>
+</body>
+</html>

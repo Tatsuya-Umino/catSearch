@@ -1,0 +1,127 @@
+@()
+
+@main("ネコサーチAPI - ネコサーチ | 迷子猫と保護情報の専用掲示板", false) {
+<body id="static">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sideBar()
+			</div>
+
+			<div id="main_wrap">
+				<div id="main_content">
+					<h2>ネコサーチAPI</h2>
+					<div id="add_320_50_twin"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+
+					<p>ネコサーチの最新投稿を外部サービスでも手軽に扱えるように、JSON APIをご用意しました。<br />リクエストされたURLのクエリ条件に見合う、最新10件の情報を返します。<br />ぜひご利用ください。</p>
+					<h3>使い方</h3>
+					<p>リクエストURLは下記になります。</p>
+					<blockquote>http://api.neko-search.com/v1/?type=(search|protect)&amp;area=(都道府県名)</blockquote>
+					<h4>type</h4>
+					<p>'search'(探されている猫の情報)、もしくは'protect'(保護されている猫)を記述してください。<br />type自体の指定がない場合は両方を含むデータが返されます。</p>
+					<h4>area</h4>
+					<p>都道府県名を記述してください。<br />名称は○○県や○○府など、都道府県の文字まで記述してください。<br />area自体の記述がない場合は全都道府県を含むデータが返されます。</p>
+					<h3>受け取れるデータ</h3>
+					<ul>
+						<li>site_url : その情報が記載されているネコサーチ上のページURL</li>
+						<li>name : 猫の名前(保護されている猫の場合、空文字)</li>
+						<li>area : 都道府県 市区郡 町村</li>
+						<li>best_feature : 特徴</li>
+						<li>body_color : 体毛の色(記載がない場合、空文字)</li>
+						<li>eye_color : 瞳の色(記載がない場合、空文字)</li>
+						<li>pict_url : 投稿された画像のURL</li>
+					</ul>
+					<h3>使用例(PHP)</h3>
+					<pre>&lt;?php
+					  $json = file_get_contents('http://api.neko-search.com/v1/?type=search&amp;area=東京都');
+					  $obj = json_decode($json, true);
+
+					  // var_dump($obj);
+					  /*
+					   * array(1) {
+					   *   ["units"]=>
+					   *   array(10) {
+					   *     [0]=>
+					   *     array(7) {
+					   *       ["site_url"]=>
+					   *       string(41) "http://www.neko-search.com/unit.php?id=○○"
+					   *       ["name"]=>
+					   *       string(9) "○○○"
+					   *       ["area"]=>
+					   *       string(36) "東京都○○区○○町"
+					   *       ["best_feature"]=>
+					   *       string(42) "○○○○○○○○"
+					   *       ["body_color"]=>
+					   *       string(24) "○○○○"
+					   *       ["eye_color"]=>
+					   *       string(9) "○○○○"
+					   *       ["pict_url"]=>
+					   *       string(73) "http://www.neko-search.com/img/units/○○○○.jpg"
+					   *     }
+					   *     [1]=>
+					   *     array(7) {
+					   *       ["site_url"]=>
+					   *       string(41) "http://www.neko-search.com/unit.php?id=○○"
+					   *       ["name"]=>
+					   *       string(9) "○○○"
+					   *       ["area"]=>
+					   *       string(36) "東京都○○市○○"
+					   *       ["best_feature"]=>
+					   *       string(42) "○○○○○○○○"
+					   *       ["body_color"]=>
+					   *       string(24) "○○○○"
+					   *       ["eye_color"]=>
+					   *       string(9) "○○○○"
+					   *       ["pict_url"]=>
+					   *       string(73) "http://www.neko-search.com/img/units/○○○○.jpg"
+					   *     }
+					----------
+					   *     [9]=>
+					   *     array(7) {
+					   *       ["site_url"]=>
+					   *       string(41) "http://www.neko-search.com/unit.php?id=○○"
+					   *       ["name"]=>
+					   *       string(9) "○○○"
+					   *       ["area"]=>
+					   *       string(36) "東京都○○区○○町"
+					   *       ["best_feature"]=>
+					   *       string(42) "○○○○○○○○"
+					   *       ["body_color"]=>
+					   *       string(24) "○○○○"
+					   *       ["eye_color"]=>
+					   *       string(9) "○○○○"
+					   *       ["pict_url"]=>
+					   *       string(73) "http://www.neko-search.com/img/units/○○○○.jpg"
+					   *     }
+					   *   }
+					   * }
+					   */
+					?&gt;</pre>
+					<h3>ご利用規約</h3>
+					<p>以下に記載する内容以外は<a href="kiyaku.php">本サイトの利用規約</a>に準じます。</p>
+					<ul>
+						<li>APIを利用して取得した情報に限り、私的利用の範囲外の利用を許可致します。</li>
+						<li>APIを利用して取得した情報に限り、営利を目的としたサイトやサービス上での利用を許可致します。</li>
+						<li>APIを利用して受け取れるデータに投稿者様の個人情報は含まれておりませんが、取り扱いには十分にご配慮ください。</li>
+						<li>本サイトと同種のサービスを提供されている方については、より使いやすい形でご提供出来るかもしれませんので、<a href="http://www.neko-search.com/contact.php">お問い合わせ</a>よりご相談ください。</li>
+					</ul>
+				</div>
+
+				<div id="footer">
+					<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+
+					<script type="text/javascript">
+					var _gaq = _gaq || [];
+					_gaq.push(['_setAccount', 'UA-21623031-10']);
+					_gaq.push(['_trackPageview']);
+					(function() {
+						var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					})();
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+}

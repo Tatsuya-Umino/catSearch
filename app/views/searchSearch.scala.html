@@ -1,0 +1,78 @@
+@(message: String, myForm: Form[Search], opts: List[Tuple2[String, String]], cats: List[Cat], route: play.api.mvc.Call)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(inputForm.f) }
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", false) {
+<body id="search">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sideBar()
+			</div>
+			<div id="main_wrap">
+					<div id="main_content" class="search">
+						<h2><i class="icon-bullhorn"></i>探されている猫の情報を検索する</h2>
+						<div id="add_320_50_twin"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+						<div id="form_box">
+							@form(action=route) {
+								<h3>迷子になった住所</h3>
+								<h4>都道府県<span>必須</span></h4>
+								<p>
+									@(select (
+										myForm("tdfkId"), options = opts
+									))
+								</p>
+								<h4>市区郡</h4>
+								<p>
+									@(inputText(
+										myForm("skgnName"), 'class -> "form_text plchld", 'title -> "例 : 猫山区"
+									))
+								</p>
+								<h4>町村</h4>
+								<p>
+									@(inputText(
+										myForm("csName"), 'class -> "form_text plchld", 'title -> "例 : 猫谷町"
+									))
+								</p>
+								<h3 class="search_keyword">検索キーワード</h3>
+								<p>
+									@(inputText(
+										myForm("keyword"), 'class -> "form_text plchld", 'title -> "例 : 赤い首輪"
+									))
+								</p>
+								<p class="post_submit"><input type="submit" name="submit" value="この内容で検索する" /></p>
+							}
+						</div>
+
+						<h2><i class="icon-comments-alt"></i>探されている猫の新着情報</h2>
+						<ul id="searched_box">
+							@for(cat <- cats) {
+								<li class="searching">
+									<h3><i class="icon-bullhorn"></i> 探しています<span>@cat.getMissingDate()</span></h3>
+									<p><a href="/detail/@cat.catId?type=search" class="opa"><img src="@cat.catImage" width="305" alt="探しています" /></a></p>
+									<dl>
+										<dt>迷子になった場所</dt>
+											<dd>@cat.pref.prefName@cat.cityName@cat.address 周辺</dd>
+										<dt>体毛の色</dt>
+											<dd>@cat.bodyColor</dd>
+										<dt>瞳の色</dt>
+											<dd>@cat.eyesColor</dd>
+										<dt>特徴</dt>
+											<dd>@cat.standoutFeature</dd>
+									</dl>
+									<p class="moreread"><i class="icon-double-angle-right"></i> <a href="/detail/@cat.catId?type=search">詳細を読む</a></p>
+								</li>
+							}
+						</ul>
+					</div>
+
+					<div id="footer">
+						<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+}

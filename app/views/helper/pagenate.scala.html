@@ -1,0 +1,13 @@
+@(page: Integer, maxPage: Integer, prev: String, next: String)
+<div id="pagenate">
+	<p id="page_prev">
+		@if(page > 1) {
+			<a href=@prev>&larr; 前へ</a>
+		}
+	</p>
+	<p id="page_next">
+		@if(maxPage > page) {
+			<a href=@next>次へ &rarr;</a>
+		}
+	</p>
+</div>

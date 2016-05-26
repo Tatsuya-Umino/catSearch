@@ -1,0 +1,102 @@
+@(message: String, requiredInfo: forms.RequiredInfo, catInfo: forms.CatInfo, cont: forms.ContributorInfo)
+
+@main("ネコサーチ | 迷子猫と保護情報の専用掲示板", true) {
+<body id="post">
+	<div id="wrap">
+		<div id="contents">
+			<div id="nav">
+				@template.sp_menu()
+			</div>
+			<div id="main_wrap">
+				<div id="main_content" class="protect">
+					<h2><i class="icon-heart"></i>保護した猫の情報を投稿する</h2>
+					<div id="add_320_50_twin">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1004150299673517" data-ad-slot="6816982319"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+					</div>
+					<div id="form_confirm_box">
+						<div>
+							<h3>最重要情報</h3>
+							<h4>探している猫のお名前</h4>
+							<p>@requiredInfo.catName</p>
+							<h4>迷子になった住所<span>丁番地以降は非公開になります</span></h4>
+							<p>@requiredInfo.prefName @requiredInfo.cityName @requiredInfo.address <span></span>@requiredInfo.lastAddress</p>
+							<h4>探している猫の一番の特徴</h4>
+							<p>@requiredInfo.standoutFeature</p>
+							<h4>探している猫の画像</h4>
+							@if(requiredInfo.imagePath == null){
+								<p><span style="font-weight:bold;color:#c04;">画像は投稿されていません。</span></p>
+							}else{
+								<p><span style="font-weight:bold;color:#c04;"><img src="@requiredInfo.imagePath" width="305" alt="探しています"></span></p>
+							}
+							<h4>マイクロチップ識別番号</h4>
+							<p>@requiredInfo.microNum</p>
+
+							<h3>探している猫の情報</h3>
+							<h4>探している猫の体毛色</h4>
+							<p>@catInfo.bodyColor</p>
+							<h4>探している猫の眼の色</h4>
+							<p>@catInfo.eyesColor</p>
+							<h4>探している猫の身体の大きさ</h4>
+							<p>@catInfo.bodySize</p>
+							<h4>迷子になった日時</h4>
+							<p>@catInfo.protectionDate</p>
+							<h4>その他の特徴・備考</h4>
+							<p>@catInfo.remarks</p>
+
+							<h3>投稿者の情報</h3>
+							<h4>氏名<span>公開されません</span></h4>
+							<p>@cont.contributorName</p>
+							<h4>ニックネーム<span>サイト上でのあなたのお名前になります</span></h4>
+							<p>@cont.contributorNickName</p>
+							<h4>生年月日<span>公開されません</span></h4>
+							<p>@cont.birthYear 年@cont.birthMonth 月@cont.birthDay 日</p>
+							<h4>性別<span>公開されません</span></h4>
+							@if(cont.sex == 1){
+								<p>男性</p>
+							}else{
+								<p>女性</p>
+							}
+							<h4>メールアドレス<span>公開されません</span></h4>
+							<p>@cont.mailAddress</p>
+							<h4>当サイトを何で知りましたか？</h4>
+							@if(cont.howToArriveId == 1){
+								<p>検索サイト</p>
+							}else{
+								@if(cont.howToArriveId == 2){
+									<p>ブログ</p>
+								}else{
+									@if(cont.howToArriveId == 3){
+										<p>バナー広告</p>
+									}else{
+										@if(cont.howToArriveId == 4){
+											<p>チラシ・ポスター</p>
+										}else{
+											@if(cont.howToArriveId == 5){
+												<p>新聞・雑誌</p>
+											}else{
+												@if(cont.howToArriveId == 6){
+													<p>知人の紹介</p>
+												}else{
+													<p>その他</p>
+												}
+											}
+										}
+									}
+								}
+							}
+						</div>
+						<div id="to_btn_box">
+							<p id="att">投稿の際は<a href="kiyaku.php" tarhet="_blank">ご利用規約</a>をお読みの上、「この内容で投稿する」ボタンを押してください。</p>
+							<p id="post_toback" class="to_btn"><a href="/post?type=protect">修正する</a></p>
+							<p id="post_tosend" class="to_btn"><a href="/post/finish?type=protect">この内容で投稿する</a></p>
+						</div>
+					</div>
+				</div>
+
+				<div id="footer">
+					<address>Copyright &copy; 2016- <a href="http://www.kiki-verb.com/" target="_blank">kiki-verb.com</a>. All Rights Reserved.</address>
+				</div>
+			</div>
+		</div>
+	</div>
+}

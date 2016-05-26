@@ -1,0 +1,15 @@
+<!-- 1.ナビゲーションバーの設定 -->
+		<nav class="navbar navbar-default">
+   			<div class="container">
+        		<!-- 2.ヘッダ情報 -->
+        	<div class="navbar-header">
+            	<a class="navbar-brand">猫サーチ管理画面</a>
+        	</div>
+        	<!-- 3.リストの配置 -->
+        	<ul class="nav navbar-nav">
+            	<li><a href="@controllers.routes.AdminController.list()">ネコ一覧</a></li>
+            	<li><a href="@controllers.routes.AdminController.adminUsersList()">管理者一覧</a></li>
+            	<li><a href="@controllers.routes.AdminController.doLogout">ログアウト</a></li>
+       	 	</ul>
+    		</div>
+		</nav>

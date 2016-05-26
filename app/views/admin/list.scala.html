@@ -1,0 +1,88 @@
+@(adminListForm : Form[forms.AdminListQuery] ,
+pagingDto : dto.PagingDto ,
+prefOpts : List[Tuple2[String, String]],
+queryString : String
+)
+
+@adminMain("一覧") {
+<script>
+/*
+$(function(){
+	$(".delete-button").click(function () {
+		var idVal = $(this).attr("id");
+		var arr = idVal.split("-");
+		var name = arr[0];
+		var id = arr[1];
+	});
+});
+*/
+</script>
+<style>
+.row {
+margin-bottom : 20px;
+}
+</style>
+@adminNav()
+	<h1>一覧</h1>
+	@helper.form(action = routes.AdminController.list()) {
+		<div class='row'>
+		<input type='hidden' name='sort' value='@adminListForm("sort").value' />
+		@helper.inputText(adminListForm("catName"),'_label -> "猫の名前")(inlineInput, implicitly[Lang])
+		@helper.inputText(adminListForm("contributorName"),'_label -> "投稿者の名前")(inlineInput, implicitly[Lang])
+		@helper.select(field = adminListForm("prefId"), options = prefOpts , '_label -> "都道府県名")(inlineInput, implicitly[Lang])
+		</div>
+		<div class='row'>
+		@helper.inputText(adminListForm("commentTitle"),'_label -> "コメントのタイトル")(inlineInput, implicitly[Lang])
+		@helper.inputText(adminListForm("commentMessage"),'_label -> "コメント")(inlineInput, implicitly[Lang])
+		<input type='submit' value='検索' />
+		</div>
+	}
+	<table class='table'>
+		<tr>
+			<th>猫の名前</th>
+			<th>投稿者の名前</th>
+			<th>コメント</th>
+			<th>投稿日&nbsp;&nbsp;
+			@if(queryString.contains("sort=")) {
+				<a href='@routes.AdminController.list()?@queryString.replace("sort=desc","sort=asc")'>▲</a>
+				<a href='@routes.AdminController.list()?@queryString.replace("sort=asc","sort=desc")'>▼</a>
+			}	else	{
+				<a href='@routes.AdminController.list()?@queryString&sort=asc'>▲</a>
+				<a href='@routes.AdminController.list()?@queryString&sort=desc'>▼</a>
+			}
+			</th>
+		</tr>
+		@for(cat <- pagingDto.cats) {
+			<tr>
+				<td>
+				@helper.form(action = routes.AdminController.delete()) {
+					<input type='hidden' name='table' value='Cat' />
+					<input type='hidden' name='id' value='@cat.catId' />
+					<a href='@routes.AdminController.edit(cat.catId)'>@cat.catName</a>&nbsp;&nbsp;
+					<input class='delete-confirm' type='submit' value='削除'>
+				}
+				</td>
+				<td>
+				@helper.form(action = routes.AdminController.delete()) {
+					<input type='hidden' name='table' value='Contributor' />
+					<input type='hidden' name='id' value='@cat.contributor.contributorId' />
+					<a href='@routes.AdminController.editContributor(cat.contributor.contributorId)'>@cat.contributor.contributorName</a>&nbsp;&nbsp;
+					<input class='delete-confirm' type='submit' value='削除'>
+					}
+				</td>
+				<td>
+				@for(comment <- cat.comments) {
+					@helper.form(action = routes.AdminController.delete()) {
+					<input type='hidden' name='table' value='Comment' />
+					<input type='hidden' name='id' value='@comment.commentId' />
+					<a href='@routes.AdminController.editComment(comment.commentId)'>@comment.commentMessage</a>&nbsp;&nbsp;
+					<input class='delete-confirm' type='submit' value='削除'>
+					}
+				}
+				</td>
+				<td>@cat.createTs</td>
+			</tr>
+		}
+	</table>
+	@pagenate(pagingDto.currentPage,pagingDto.totalPageCount,queryString)
+}
